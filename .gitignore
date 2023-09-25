@@ -1,5 +1,4 @@
-bin/
-intermediate/
+_build/
 
 # The canonical out-of-tree build subdirectory
 build
