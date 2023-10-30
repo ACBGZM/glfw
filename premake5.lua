@@ -1,6 +1,7 @@
 project "GLFW"
     kind "StaticLib"
     language "C"
+    staticruntime "on"
 
     targetdir ("_build/out-bin/" .. output_folder .. "/%{prj.name}")
     objdir ("_build/out-obj/" .. output_folder .. "/%{prj.name}")
@@ -31,10 +32,8 @@ project "GLFW"
 
     }
     filter "system:linux"
-        pic "On"
-
+        pic "on"
         systemversion "latest"
-        staticruntime "On"
 
         files
         {
@@ -52,18 +51,12 @@ project "GLFW"
 
         defines
         {
-            "_GLFW_X11"
-        
+            "_GLFW_X11",
         }
 
     filter "system:windows"
         systemversion "latest"
-        staticruntime "On"
     
-        -- buildoptions{
-        --     "/MT"
-        -- }
-
         files
         {
             "src/win32_init.c",
@@ -83,14 +76,13 @@ project "GLFW"
         defines 
         { 
             "_GLFW_WIN32",
-            "_CRT_SECURE_NO_WARNINGS"
-
+            "_CRT_SECURE_NO_WARNINGS",
         }
 
     filter "configurations:Debug"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         runtime "Release"
-        optimize "On"
+        optimize "on"
